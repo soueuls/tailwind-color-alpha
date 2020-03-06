@@ -1,0 +1,23 @@
+{
+  "name": "tailwind-color-alpha",
+  "version": "1.0.0",
+  "description": "Automatic alpha variants for your Tailwind CSS colors based on your opacity config",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/soueuls/tailwind-color-alpha"
+  },
+  "keywords": [
+    "tailwind",
+    "tailwindcss",
+    "plugin",
+    "tailwindcss-plugin",
+    "css",
+    "alpha"
+  ],
+  "author": "Swann Polydor <swann.polydor@epitech.eu>",
+  "license": "MIT"
+}
