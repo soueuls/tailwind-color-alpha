@@ -24,8 +24,8 @@ module.exports = function() {
             const colorVariant =
               typeof value === "string" || colorName === "default"
                 ? key
-                : `-${key}-${colorName}`;
-            newColors[`.bg-${colorVariant}-${o}`] = {
+                : `${key}-${colorName}`;
+            newColors[`.bg-${colorVariant}-alpha-${o}`] = {
               "background-color": `rgba(${rgb.r},${rgb.g},${rgb.b}, ${opacities[o]})`
             };
           }
