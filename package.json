@@ -1,6 +1,6 @@
 {
   "name": "tailwind-color-alpha",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Automatic alpha variants for your Tailwind CSS colors based on your opacity config",
   "main": "index.js",
   "scripts": {
