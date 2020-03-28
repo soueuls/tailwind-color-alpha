@@ -1,6 +1,6 @@
 {
   "name": "tailwind-color-alpha",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "Automatic alpha variants for your Tailwind CSS colors based on your opacity config",
   "main": "index.js",
   "scripts": {
@@ -19,5 +19,8 @@
     "alpha"
   ],
   "author": "Swann Polydor <swann.polydor@epitech.eu>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "color": "^3.1.2"
+  }
 }

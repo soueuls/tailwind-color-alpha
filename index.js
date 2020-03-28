@@ -1,37 +1,52 @@
+const Color = require("color");
+
 module.exports = function() {
-  const hexToRgb = hex => {
-    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-    return (
-      result && {
-        r: parseInt(result[1], 16),
-        g: parseInt(result[2], 16),
-        b: parseInt(result[3], 16)
-      }
-    );
+  const PREFIXES = {
+    backgroundColor: ["bg"],
+    borderColor: ["border", "border-t", "border-r", "border-b", "border-l"],
+    fill: ["fill"],
+    stroke: ["stroke"],
+    textColor: ["text"]
   };
 
-  return function({ addUtilities, theme }) {
+  const PROPERTIES = {
+    backgroundColor: ["backgroundColor"],
+    borderColor: [
+      "borderColor",
+      "borderTopColor",
+      "borderRightColor",
+      "borderBottomColor",
+      "borderLeftColor"
+    ],
+    fill: ["fill"],
+    stroke: ["stroke"],
+    textColor: ["color"]
+  };
+
+  return function({ addUtilities, theme, variants }) {
     let colors = theme("colors", []);
     let opacities = theme("opacity", []);
-    const newColors = {};
-
     for (const [key, value] of Object.entries(colors)) {
       const colorGroup = typeof value === "string" ? { [key]: value } : value;
       for (const [colorName, colorValue] of Object.entries(colorGroup)) {
-        let rgb = hexToRgb(colorValue);
-        if (rgb) {
-          for (const o in opacities) {
-            const colorVariant =
-              typeof value === "string" || colorName === "default"
-                ? key
-                : `${key}-${colorName}`;
-            newColors[`.bg-${colorVariant}-alpha-${o}`] = {
-              "background-color": `rgba(${rgb.r},${rgb.g},${rgb.b}, ${opacities[o]})`
-            };
+        for (const o in opacities) {
+          const colorVariant =
+            typeof value === "string" || colorName === "default"
+              ? key
+              : `${key}-${colorName}`;
+          for (const [variant, properties] of Object.entries(PREFIXES)) {
+            const newColors = {};
+            properties.forEach((property, index) => {
+              newColors[`.${property}-${colorVariant}-alpha-${o}`] = {
+                [`${PROPERTIES[variant][index]}`]: Color(colorValue)
+                  .alpha(opacities[o])
+                  .string()
+              };
+            });
+            addUtilities(newColors, variants(variant));
           }
         }
       }
     }
-    addUtilities(newColors);
   };
 };
