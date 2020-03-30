@@ -34,7 +34,7 @@ module.exports = {
 };
 ```
 
-The plugin will automatically use your colors and opacity config to generate all the corresponding rgba values
+The plugin will automatically use your colors and opacity config to generate all the corresponding rgba values for your text, background, border, fill and stroke utility classes respecting your variant settings for each.
 
 ## Examples
 
@@ -42,16 +42,11 @@ The plugin will automatically use your colors and opacity config to generate all
 module.exports = {
   theme: {
     colors: {
-      primary: "#2b2e4a",
-      red: {
-        default: "#e84545",
-        darker: "#903749"
-      }
+      primary: "#2b2e4a"
     },
     opacity: {
       "25": ".25",
-      "50": "0.5",
-      "75": "0.75"
+      "50": "0.5"
     }
   }
 };
@@ -66,29 +61,26 @@ The configuration above yields the following utilities:
 .bg-primary-alpha-50 {
   background-color: rgba(43, 46, 74, 0.5);
 }
-.bg-primary-alpha-75 {
-  background-color: rgba(43, 46, 74, 0.75);
+.text-primary-alpha-25 {
+  color: rgba(43, 46, 74, 0.25);
+}
+.text-primary-alpha-50 {
+  color: rgba(43, 46, 74, 0.5);
+}
+.text-primary-alpha-25 {
+  border-color: rgba(43, 46, 74, 0.25);
+}
+.text-primary-alpha-25 {
+  border-color: rgba(43, 46, 74, 0.5);
+}
+.hover\:text-primary-alpha-25:hover {
+  color: rgba(43, 46, 74, 0.25);
+}
+.focus\:text-primary-alpha-50:focus {
+  color: rgba(43, 46, 74, 0.5);
 }
 
-.bg-red-alpha-25 {
-  background-color: rgba(232, 69, 69, 0.25);
-}
-.bg-red-alpha-50 {
-  background-color: rgba(232, 69, 69, 0.5);
-}
-.bg-red-alpha-75 {
-  background-color: rgba(232, 69, 69, 0.75);
-}
-
-.bg-red-darker-alpha-25 {
-  background-color: rgba(144, 55, 73, 0.25);
-}
-.bg-red-darker-alpha-50 {
-  background-color: rgba(144, 55, 73, 0.5);
-}
-.bg-red-darker-alpha-75 {
-  background-color: rgba(144, 55, 73, 0.75);
-}
+/* and more... */
 ```
 
 Notice that a color named `red.default` will end up generating `text-red` and so we follow Tailwind's convention with `bg-red-alpha-${opacity}`
