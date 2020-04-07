@@ -13,11 +13,11 @@ module.exports = {
       primary: "#2b2e4a",
       "primary-10": "rgba(43,46,74, 0.1)",
       "primary-20": "rgba(43,46,74, 0.2)",
-      "primary-75": "rgba(43,46,74, 0.75)"
+      "primary-75": "rgba(43,46,74, 0.75)",
       // ...
-    }
+    },
     // ...
-  }
+  },
 };
 ```
 
@@ -30,7 +30,7 @@ But it's repetitive, confusing and error prone. We can do better.
 ```javascript
 module.exports = {
   // ...
-  plugins: [require("tailwind-color-alpha")()]
+  plugins: [require("tailwind-color-alpha")()],
 };
 ```
 
@@ -42,13 +42,13 @@ The plugin will automatically use your colors and opacity config to generate all
 module.exports = {
   theme: {
     colors: {
-      primary: "#2b2e4a"
+      primary: "#2b2e4a",
     },
     opacity: {
       "25": ".25",
-      "50": "0.5"
-    }
-  }
+      "50": "0.5",
+    },
+  },
 };
 ```
 
@@ -67,10 +67,10 @@ The configuration above yields the following utilities:
 .text-primary-alpha-50 {
   color: rgba(43, 46, 74, 0.5);
 }
-.text-primary-alpha-25 {
+.border-primary-alpha-25 {
   border-color: rgba(43, 46, 74, 0.25);
 }
-.text-primary-alpha-25 {
+.border-primary-alpha-25 {
   border-color: rgba(43, 46, 74, 0.5);
 }
 .hover\:text-primary-alpha-25:hover {
